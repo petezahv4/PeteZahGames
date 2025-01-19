@@ -5,11 +5,7 @@ const iframe = document.getElementById('myIframe');
 if (url) {
   iframe.src = url;
   localStorage.setItem('iframeUrl', url);
-
-  // Schedule the URL removal after 1 second
-  setTimeout(function() {
-    history.replaceState(null, '', window.location.pathname);
-  }, 1000);
+  history.replaceState(null, '', window.location.pathname);
 } else {
   const savedUrl = localStorage.getItem('iframeUrl');
   if (savedUrl) {
