@@ -1,20 +1,23 @@
-
 const urlParams = new URLSearchParams(window.location.search);
-        const url = urlParams.get('url');
-        const iframe = document.getElementById('myIframe');
+const url = urlParams.get('url');
+const iframe = document.getElementById('myIframe');
 
-        if (url) {
-            iframe.src = url;
-            localStorage.setItem('iframeUrl', url);
-            history.replaceState(null, '', window.location.pathname);
-        } else {
-            const savedUrl = localStorage.getItem('iframeUrl');
-            if (savedUrl) {
-                iframe.src = savedUrl;
-            } else {
-                console.error("No URL parameter provided and no saved URL found.");
-            }
-        }
+if (url) {
+  iframe.src = url;
+  localStorage.setItem('iframeUrl', url);
+
+  // Schedule the URL removal after 1 second
+  setTimeout(function() {
+    history.replaceState(null, '', window.location.pathname);
+  }, 1000);
+} else {
+  const savedUrl = localStorage.getItem('iframeUrl');
+  if (savedUrl) {
+    iframe.src = savedUrl;
+  } else {
+    console.error("No URL parameter provided and no saved URL found.");
+  }
+}
 
 function toggleFullscreen() {
             const iframe = document.getElementById('myIframe');
