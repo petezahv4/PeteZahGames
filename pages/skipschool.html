@@ -1,0 +1,1117 @@
+
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SkipSchool Proxies</title>
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/smoressy/star/main/star-removebg-preview.png">
+  <style type="text/css">@font-face {font-family:Poppins;font-style:normal;font-weight:700;src:url(/cf-fonts/s/poppins/5.0.11/latin/700/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Poppins;font-style:normal;font-weight:700;src:url(/cf-fonts/s/poppins/5.0.11/latin-ext/700/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Poppins;font-style:normal;font-weight:700;src:url(/cf-fonts/s/poppins/5.0.11/devanagari/700/normal.woff2);unicode-range:U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+25CC,U+A830-A839,U+A8E0-A8FF;font-display:swap;}</style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+    ::selection {
+      background-color: #B60086 !important;
+      color: #000000 !important;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+    }
+    body {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #121212;
+      color: #fff;
+    }
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.3;
+      filter: blur(8px);
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      text-align: center;
+      z-index: 1;
+    }
+    .quote {
+      color: #808080;
+      font-style: italic;
+      text-align: center;
+      margin-bottom: 20px;
+      z-index: 1;
+      max-width: 600px;
+      padding: 0 20px;
+      font-weight: 400;
+    }
+    .container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 20px;
+      border-radius: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      z-index: 1;
+    }
+    label {
+      font-size: 1.2rem;
+    }
+    #proxy-dropdown {
+      display: none;
+    }
+    .custom-dropdown {
+      position: relative;
+      user-select: none;
+      width: 400px;
+    }
+    .dropdown-selected {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #2a2a2a;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .dropdown-selected:hover {
+      background-color: #3a3a3a;
+    }
+    .dropdown-selected i {
+      margin-left: 10px;
+    }
+    .dropdown-list {
+      position: absolute;
+      top: calc(100% + 5px);
+      left: 0;
+      width: 100%;
+      border-radius: 12px;
+      background-color: rgba(18, 18, 18, 0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      z-index: 99;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 10px;
+    }
+    .dropdown-list.open {
+      max-height: 400px;
+      opacity: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .dropdown-option {
+      padding: 10px 15px;
+      cursor: pointer;
+      color: #fff;
+      transition: background-color 0.2s;
+      border-radius: 8px;
+    }
+    .dropdown-option:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    .dropdown-option.highlight {
+      background-color: rgba(255, 255, 255, 0.2) !important;
+    }
+    #search-bar {
+      width: 100%;
+      grid-column: 1 / -1;
+      padding: 8px 12px;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 10px;
+      background-color: #2a2a2a;
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+      caret-color: #fff;
+      transition: background-color 0.3s;
+    }
+    #search-bar::placeholder {
+      color: #a0a0a0;
+    }
+    #search-bar:focus {
+      background-color: #3a3a3a;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 12px;
+      background-color: #91009f;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    button:hover {
+      background-color: #ab00bc;
+      transform: scale(1.05);
+    }
+    .info-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 20px;
+      background-color: #1e1e1e;
+      padding: 10px 20px;
+      border-radius: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+    .info-container i,
+    .info-container span,
+    .info-container div {
+      color: #a0a0a0;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .info-container span.made-by {
+      color: #a0a0a0;
+      cursor: default;
+    }
+    @media (max-width: 480px) {
+      .container {
+        width: 90%;
+        flex-direction: column;
+      }
+      .custom-dropdown {
+        width: 100%;
+      }
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&amp;display=swap"><style>
+      .q1m8rc {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #1a1a1a;
+        color: white;
+        padding: 12px;
+        border-radius: 50px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        width: 42px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 9999;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      .q1m8rc:hover {
+        width: 180px;
+        background-color: #2a2a2a;
+      }
+
+      .q1m8rc i {
+        font-size: 18px;
+        min-width: 18px;
+      }
+
+      .q1m8rc .zt5v2y {
+        margin-left: 12px;
+        white-space: nowrap;
+        font-size: 14px;
+        font-weight: 500;
+      }
+    </style><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"><style>
+            .devtools-warning-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.7);
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 999999;
+                opacity: 0;
+                transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                font-family: 'Poppins', sans-serif;
+            }
+
+            .devtools-warning-container {
+                background: rgba(17, 17, 17, 0.95);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 16px;
+                padding: 32px;
+                max-width: 520px;
+                width: 90%;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+                transform: scale(0.95);
+                opacity: 0;
+                transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+
+            .devtools-warning-overlay.visible .devtools-warning-container {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            .devtools-warning-header {
+                display: flex;
+                align-items: center;
+                margin-bottom: 20px;
+                padding-bottom: 16px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .devtools-warning-title {
+                font-size: 24px;
+                font-weight: 600;
+                color: #FF4444;
+                margin: 0;
+                letter-spacing: -0.5px;
+            }
+
+            .devtools-warning-content {
+                position: relative;
+                padding-bottom: 60px;
+            }
+
+            .devtools-warning-message {
+                color: rgba(255, 255, 255, 0.9);
+                line-height: 1.6;
+                margin: 0;
+                font-size: 15px;
+                font-weight: 400;
+            }
+
+            .devtools-warning-close {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                background: #FF4444;
+                color: #FFFFFF;
+                border: none;
+                padding: 12px 24px;
+                border-radius: 8px;
+                font-family: 'Poppins', sans-serif;
+                font-weight: 600;
+                font-size: 14px;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                transform: translateY(0);
+                box-shadow: 0 4px 12px rgba(255, 68, 68, 0.2);
+            }
+
+            .devtools-warning-close:hover {
+                background: #FF5555;
+                box-shadow: 0 6px 16px rgba(255, 68, 68, 0.3);
+            }
+
+            .devtools-warning-close:active {
+                transform: translateY(0);
+                box-shadow: 0 2px 8px rgba(255, 68, 68, 0.2);
+            }
+        </style></head>
+<body>
+  <canvas id="background-canvas" width="484" height="640"></canvas>
+  <h1>SkipSchool Proxies</h1>
+  <div id="quote" class="quote">Beyond Borders.</div>
+  <div class="container">
+    <label for="proxy-dropdown">Give me a proxy for</label>
+    <div class="custom-dropdown" id="proxy-dropdown-container">
+      <div class="dropdown-selected" id="selected-option">
+        <span>Interstellar</span>
+        <i class="fa-solid fa-caret-down"></i>
+      </div>
+      <div class="dropdown-list" id="options-list"><input type="text" id="search-bar" placeholder="Search..."><div class="dropdown-option">Interstellar</div><div class="dropdown-option">Doge</div><div class="dropdown-option">Ghost</div><div class="dropdown-option">Rammerhead</div><div class="dropdown-option">Void</div><div class="dropdown-option">TN</div><div class="dropdown-option">Asteroid</div><div class="dropdown-option">Art Class</div><div class="dropdown-option">Glitch</div><div class="dropdown-option">Cloudburst</div><div class="dropdown-option">Light</div><div class="dropdown-option">Mexis</div><div class="dropdown-option">Equinox</div><div class="dropdown-option">Bolt</div><div class="dropdown-option">Moonlight</div><div class="dropdown-option">Kazwire</div><div class="dropdown-option">Supernova</div><div class="dropdown-option">Shadow</div><div class="dropdown-option">Utopia</div><div class="dropdown-option">3kh0 X</div><div class="dropdown-option">3kh0 v5</div><div class="dropdown-option">3kh0 Lite</div><div class="dropdown-option">Core</div><div class="dropdown-option">Szvy Central</div><div class="dropdown-option">Sunset</div><div class="dropdown-option">Turbo-X</div><div class="dropdown-option">DuckHTML</div><div class="dropdown-option">Pizza</div><div class="dropdown-option">Geometry</div><div class="dropdown-option">PXLNOVA</div><div class="dropdown-option">Zeelix</div><div class="dropdown-option">Ultraviolet TIW</div><div class="dropdown-option">Emerald</div><div class="dropdown-option">CanLite</div><div class="dropdown-option">Reds Exploit Corner</div><div class="dropdown-option">Space</div><div class="dropdown-option">Mini Proxy</div><div class="dropdown-option">Boredom</div><div class="dropdown-option">Fade</div><div class="dropdown-option">BrunysIXLWork</div><div class="dropdown-option">Astro</div><div class="dropdown-option">LoungeF2X</div><div class="dropdown-option">TIW</div><div class="dropdown-option">Unknown</div><div class="dropdown-option">US4</div><div class="dropdown-option">Latte</div><div class="dropdown-option">Soul V2</div><div class="dropdown-option">mathlete.life</div><div class="dropdown-option">Camouflage</div><div class="dropdown-option">Nano</div></div>
+    </div>
+    <select id="proxy-dropdown">
+      <option value="" disabled="" selected="">Loading...</option>
+    </select>
+    <button id="go-button">Open</button>
+  </div>
+  <div class="info-container">
+    <div title="Total Links">
+      <i class="fa-solid fa-server"></i>
+      <span id="total-links-value">1615</span>
+    </div>
+    <div title="Number of Proxies">
+      <i class="fa-solid fa-globe"></i>
+      <span id="proxy-count-value">312</span>
+    </div>
+    <div>
+      <i class="fa-solid fa-splotch"></i>
+      <span class="made-by">Made by SkipSchool</span>
+    </div>
+  </div>
+  <script>
+    let allData = null;
+    let selectedCategory = null;
+    let domainFrequencyMap = new Map();
+    const proxyCountValue = document.getElementById('proxy-count-value');
+    const totalLinksValue = document.getElementById('total-links-value');
+    const selectedOptionDiv = document.getElementById('selected-option');
+    const selectedOptionText = selectedOptionDiv.querySelector('span');
+    const dropdownList = document.getElementById('options-list');
+    const goButton = document.getElementById('go-button');
+
+    const quotes = [
+      "Beyond Borders.",
+    ];
+
+    function setRandomQuote() {
+      const quoteElement = document.getElementById('quote');
+      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+      quoteElement.textContent = randomQuote;
+    }
+
+    function getDomainFromUrl(url) {
+      try {
+        const parts = url.split('.');
+        if (parts.length >= 2) {
+          return parts.slice(-2).join('.');
+        }
+      } catch (e) {
+        console.error('Error parsing domain:', e);
+      }
+      return url;
+    }
+
+    function analyzeDomainFrequency() {
+      domainFrequencyMap.clear();
+      for (const category in allData) {
+        allData[category].forEach(url => {
+          const domain = getDomainFromUrl(url);
+          domainFrequencyMap.set(domain, (domainFrequencyMap.get(domain) || 0) + 1);
+        });
+      }
+    }
+
+    function sortProxiesByUniqueness(proxies) {
+      return proxies.sort((a, b) => {
+        const domainA = getDomainFromUrl(a);
+        const domainB = getDomainFromUrl(b);
+        return (domainFrequencyMap.get(domainA) || 0) - (domainFrequencyMap.get(domainB) || 0);
+      });
+    }
+
+    setRandomQuote();
+
+    function createSearchBar() {
+      const searchInput = document.createElement('input');
+      searchInput.type = 'text';
+      searchInput.id = 'search-bar';
+      searchInput.placeholder = 'Search...';
+      dropdownList.appendChild(searchInput);
+      searchInput.addEventListener('input', function() {
+        const filter = this.value.toLowerCase();
+        const options = dropdownList.querySelectorAll('.dropdown-option');
+        options.forEach(option => {
+          const text = option.textContent.toLowerCase();
+          if (text.includes(filter)) {
+            option.style.display = 'block';
+          } else {
+            option.style.display = 'none';
+          }
+        });
+      });
+
+      let currentHighlightedIndex = -1;
+
+      searchInput.addEventListener('keydown', function(e) {
+        const validKeys = ['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight', 'Enter'];
+        if (!validKeys.includes(e.key)) return;
+
+        const allOptions = [...dropdownList.querySelectorAll('.dropdown-option')]
+          .filter(option => option.style.display !== 'none');
+
+        e.preventDefault();
+
+        if (allOptions.length === 0) return;
+
+        const highlightItem = (index) => {
+          allOptions.forEach(opt => opt.classList.remove('highlight'));
+          allOptions[index].classList.add('highlight');
+        };
+
+        const selectItem = (index) => {
+          allOptions[index].click();
+        };
+
+        const columns = 2;
+
+        if (e.key === 'ArrowDown') {
+          if (currentHighlightedIndex === -1) {
+            currentHighlightedIndex = 0;
+          } else {
+            let newIndex = currentHighlightedIndex + columns;
+            if (newIndex >= allOptions.length) {
+              newIndex = currentHighlightedIndex;
+            }
+            currentHighlightedIndex = newIndex;
+          }
+          highlightItem(currentHighlightedIndex);
+        } else if (e.key === 'ArrowUp') {
+          if (currentHighlightedIndex === -1) {
+            currentHighlightedIndex = 0;
+          } else {
+            let newIndex = currentHighlightedIndex - columns;
+            if (newIndex < 0) {
+              newIndex = currentHighlightedIndex;
+            }
+            currentHighlightedIndex = newIndex;
+          }
+          highlightItem(currentHighlightedIndex);
+        } else if (e.key === 'ArrowRight') {
+          if (currentHighlightedIndex === -1) {
+            currentHighlightedIndex = 0;
+          } else {
+            if ((currentHighlightedIndex % columns) === 0) {
+              let newIndex = currentHighlightedIndex + 1;
+              if (newIndex >= allOptions.length) {
+                newIndex = currentHighlightedIndex;
+              }
+              currentHighlightedIndex = newIndex;
+            }
+          }
+          highlightItem(currentHighlightedIndex);
+        } else if (e.key === 'ArrowLeft') {
+          if (currentHighlightedIndex === -1) {
+            currentHighlightedIndex = 0;
+          } else {
+            if ((currentHighlightedIndex % columns) === 1) {
+              let newIndex = currentHighlightedIndex - 1;
+              if (newIndex < 0) {
+                newIndex = currentHighlightedIndex;
+              }
+              currentHighlightedIndex = newIndex;
+            }
+          }
+          highlightItem(currentHighlightedIndex);
+        } else if (e.key === 'Enter') {
+          if (currentHighlightedIndex > -1) {
+            selectItem(currentHighlightedIndex);
+          }
+        }
+      });
+    }
+
+    selectedOptionDiv.addEventListener('click', () => {
+      dropdownList.classList.toggle('open');
+      const searchBar = document.getElementById('search-bar');
+      if (dropdownList.classList.contains('open') && searchBar) {
+        dropdownList.scrollTop = 0;
+        setTimeout(() => {
+          dropdownList.scrollTop = 0;
+        }, 0);
+        requestAnimationFrame(() => {
+          dropdownList.scrollTop = 0;
+        });
+        searchBar.focus();
+        searchBar.setSelectionRange(searchBar.value.length, searchBar.value.length);
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!document.getElementById('proxy-dropdown-container').contains(e.target)) {
+        dropdownList.classList.remove('open');
+      }
+    });
+
+    async function loadProxies() {
+      selectedOptionText.textContent = 'Loading...';
+      try {
+        const response = await fetch('/storage/assets/json/proxies.json');
+        if (!response.ok) throw new Error('Failed to load from primary source');
+        allData = await response.json();
+      } catch (error) {
+        try {
+          const fallbackResponse = await fetch('https://raw.githubusercontent.com/smoressy/tab-changer-9000/refs/heads/main/bullshit.json');
+          if (!fallbackResponse.ok) throw new Error('Failed to load fallback JSON');
+          allData = await fallbackResponse.json();
+          if (!allData || Object.keys(allData).length === 0) throw new Error('Fallback JSON did not define proxyGroups');
+        } catch (scriptError) {
+          console.error('Error loading fallback JSON:', scriptError);
+          alert('Failed to load proxies. Please try again later.');
+          selectedOptionText.textContent = 'Error loading';
+          return;
+        }
+      }
+
+      analyzeDomainFrequency();
+
+      let totalLinks = 0;
+      for (const category in allData) {
+        totalLinks += allData[category].length;
+      }
+      totalLinksValue.textContent = totalLinks;
+
+      dropdownList.innerHTML = '';
+      createSearchBar();
+      const categories = Object.keys(allData);
+      const midIndex = Math.ceil(categories.length / 2);
+      const firstHalf = categories.slice(0, midIndex);
+      const secondHalf = categories.slice(midIndex);
+
+      firstHalf.forEach(category => {
+        const optionDiv = document.createElement('div');
+        optionDiv.classList.add('dropdown-option');
+        optionDiv.textContent = category;
+        optionDiv.addEventListener('click', () => {
+          selectedCategory = category;
+          selectedOptionText.textContent = category;
+          proxyCountValue.textContent = allData[category].length;
+          dropdownList.classList.remove('open');
+          const searchBar = document.getElementById('search-bar');
+          if (searchBar) {
+            searchBar.value = '';
+            const options = dropdownList.querySelectorAll('.dropdown-option');
+            options.forEach(opt => {
+              opt.style.display = 'block';
+            });
+          }
+        });
+        dropdownList.appendChild(optionDiv);
+      });
+
+      secondHalf.forEach(category => {
+        const optionDiv = document.createElement('div');
+        optionDiv.classList.add('dropdown-option');
+        optionDiv.textContent = category;
+        optionDiv.addEventListener('click', () => {
+          selectedCategory = category;
+          selectedOptionText.textContent = category;
+          proxyCountValue.textContent = allData[category].length;
+          dropdownList.classList.remove('open');
+          const searchBar = document.getElementById('search-bar');
+          if (searchBar) {
+            searchBar.value = '';
+            const options = dropdownList.querySelectorAll('.dropdown-option');
+            options.forEach(opt => {
+              opt.style.display = 'block';
+            });
+          }
+        });
+        dropdownList.appendChild(optionDiv);
+      });
+
+      if (categories.length > 0) {
+        selectedCategory = categories[0];
+        selectedOptionText.textContent = categories[0];
+        proxyCountValue.textContent = allData[categories[0]].length;
+      }
+    }
+
+    loadProxies();
+
+    document.getElementById('go-button').addEventListener('click', function () {
+      if (!selectedCategory || !allData) return;
+
+      const storageKey = 'skipSchool_' + selectedCategory;
+      let storedProxies = localStorage.getItem(storageKey);
+
+      if (!storedProxies) {
+        let proxiesArray = [...allData[selectedCategory]];
+        proxiesArray = sortProxiesByUniqueness(proxiesArray);
+        for (let i = proxiesArray.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [proxiesArray[i], proxiesArray[j]] = [proxiesArray[j], proxiesArray[i]];
+        }
+        localStorage.setItem(storageKey, JSON.stringify(proxiesArray));
+        storedProxies = JSON.stringify(proxiesArray);
+      }
+
+      let proxies = JSON.parse(storedProxies);
+
+      if (proxies.length === 0) {
+        let proxiesArray = [...allData[selectedCategory]];
+        proxiesArray = sortProxiesByUniqueness(proxiesArray);
+        for (let i = proxiesArray.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [proxiesArray[i], proxiesArray[j]] = [proxiesArray[j], proxiesArray[i]];
+        }
+        localStorage.setItem(storageKey, JSON.stringify(proxiesArray));
+        proxies = proxiesArray;
+      }
+
+      const proxy = proxies.shift();
+      localStorage.setItem(storageKey, JSON.stringify(proxies));
+
+      window.open('http://' + proxy, '_blank');
+    });
+
+    const canvas = document.getElementById('background-canvas');
+    const ctx = canvas.getContext('2d');
+    let particlesArray = [];
+    const colors = ['#ffffff', '#ff00ff', '#00ffff', '#ffff00', '#ff9900'];
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = Math.random() * 1 - 0.5;
+        this.speedY = Math.random() * 1 - 0.5;
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+        this.history = [];
+        this.maxLength = 50;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x < 0 || this.x > canvas.width) this.speedX = -this.speedX;
+        if (this.y < 0 || this.y > canvas.height) this.speedY = -this.speedY;
+
+        this.history.push({x: this.x, y: this.y});
+        if (this.history.length > this.maxLength) {
+          this.history.shift();
+        }
+      }
+      draw() {
+        ctx.lineWidth = this.size;
+        ctx.strokeStyle = this.color;
+        ctx.beginPath();
+        ctx.moveTo(this.history[0].x, this.history[0].y);
+        for (let i = 1; i < this.history.length; i++) {
+          ctx.lineTo(this.history[i].x, this.history[i].y);
+        }
+        ctx.stroke();
+      }
+    }
+
+    function init() {
+      particlesArray = [];
+      const numberOfParticles = (canvas.width * canvas.height) / 5000;
+      for (let i = 0; i < numberOfParticles; i++) {
+        particlesArray.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particlesArray.forEach(particle => {
+        particle.update();
+        particle.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      init();
+    });
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    init();
+    animate();
+
+    const xk4f9j = document.createElement('link');
+    xk4f9j.rel = 'stylesheet';
+    xk4f9j.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css';
+    document.head.appendChild(xk4f9j);
+
+    const p8d2mq = document.createElement('link');
+    p8d2mq.rel = 'stylesheet';
+    p8d2mq.href = 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap';
+    document.head.appendChild(p8d2mq);
+
+    const b7h3nx = document.createElement('div');
+    b7h3nx.innerHTML = `
+      <i class="fas fa-paperclip"></i>
+      <span class="zt5v2y">Go to SkipSchool</span>
+    `;
+
+    const y9w6kl = document.createElement('style');
+    y9w6kl.textContent = `
+      .q1m8rc {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #1a1a1a;
+        color: white;
+        padding: 12px;
+        border-radius: 50px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        width: 42px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 9999;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      .q1m8rc:hover {
+        width: 180px;
+        background-color: #2a2a2a;
+      }
+
+      .q1m8rc i {
+        font-size: 18px;
+        min-width: 18px;
+      }
+
+      .q1m8rc .zt5v2y {
+        margin-left: 12px;
+        white-space: nowrap;
+        font-size: 14px;
+        font-weight: 500;
+      }
+    `;
+
+    b7h3nx.className = 'q1m8rc';
+    b7h3nx.addEventListener('click', () => {
+      window.location.href = 'https://smoresxo.shop';
+    });
+
+    document.head.appendChild(y9w6kl);
+    document.body.appendChild(b7h3nx);
+    const randomNumber = Math.floor(Math.random() * 1000) + 1;
+
+    if (randomNumber === 1) {
+        const style = document.createElement('style');
+        style.textContent = `
+          .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+          }
+
+          .modal-container {
+            position: relative;
+            background-color: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 0.2s ease-out;
+          }
+
+          .modal-container.show {
+            opacity: 1;
+            transform: scale(1);
+          }
+
+          .modal-titlebar {
+            padding: 16px 20px;
+            background-color: #2a2a2a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #3a3a3a;
+          }
+
+          .modal-title {
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            margin: 0;
+            font-size: 16px;
+            letter-spacing: 0.3px;
+          }
+
+          .modal-close {
+            background: none;
+            border: none;
+            color: #999;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 0 5px;
+            transition: color 0.2s ease;
+            line-height: 1;
+          }
+
+          .modal-close:hover {
+            color: white;
+          }
+
+          .modal-image-container {
+            padding: 20px;
+          }
+
+          .modal-image {
+            display: block;
+            max-height: 80vh;
+            border-radius: 6px;
+          }
+        `;
+
+        document.head.appendChild(style);
+
+        const fontLink = document.createElement('link');
+        fontLink.href = 'https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap';
+        fontLink.rel = 'stylesheet';
+        document.head.appendChild(fontLink);
+
+        const modal = document.createElement('div');
+        modal.className = 'modal-overlay';
+
+        const container = document.createElement('div');
+        container.className = 'modal-container';
+
+        const titlebar = document.createElement('div');
+        titlebar.className = 'modal-titlebar';
+
+        const title = document.createElement('h2');
+        title.className = 'modal-title';
+        title.textContent = 'Imagine if Ninja got a low taper fade...';
+
+        const closeButton = document.createElement('button');
+        closeButton.className = 'modal-close';
+        closeButton.innerHTML = '×';
+        closeButton.onclick = () => modal.remove();
+
+        const imageContainer = document.createElement('div');
+        imageContainer.className = 'modal-image-container';
+
+        const image = document.createElement('img');
+        image.className = 'modal-image';
+        image.src = 'https://raw.githubusercontent.com/smoressy/tab-changer-9000/refs/heads/main/massive.png';
+        image.alt = 'Ninja with a low taper fade';
+
+        image.onload = () => {
+            container.style.width = `${image.naturalWidth + 40}px`;
+            requestAnimationFrame(() => container.classList.add('show'));
+        };
+
+        imageContainer.appendChild(image);
+        titlebar.appendChild(title);
+        titlebar.appendChild(closeButton);
+        container.appendChild(titlebar);
+        container.appendChild(imageContainer);
+        modal.appendChild(container);
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.remove();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && document.contains(modal)) modal.remove();
+        });
+
+        document.body.appendChild(modal);
+    }
+    (() => {
+    let warningShown = false;
+    let warningTimeout;
+
+    const injectFont = () => {
+        const fontLink = document.createElement('link');
+        fontLink.href = 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap';
+        fontLink.rel = 'stylesheet';
+        document.head.appendChild(fontLink);
+    };
+
+    const injectStyles = () => {
+        const styles = `
+            .devtools-warning-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.7);
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 999999;
+                opacity: 0;
+                transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                font-family: 'Poppins', sans-serif;
+            }
+
+            .devtools-warning-container {
+                background: rgba(17, 17, 17, 0.95);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 16px;
+                padding: 32px;
+                max-width: 520px;
+                width: 90%;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+                transform: scale(0.95);
+                opacity: 0;
+                transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+
+            .devtools-warning-overlay.visible .devtools-warning-container {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            .devtools-warning-header {
+                display: flex;
+                align-items: center;
+                margin-bottom: 20px;
+                padding-bottom: 16px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .devtools-warning-title {
+                font-size: 24px;
+                font-weight: 600;
+                color: #FF4444;
+                margin: 0;
+                letter-spacing: -0.5px;
+            }
+
+            .devtools-warning-content {
+                position: relative;
+                padding-bottom: 60px;
+            }
+
+            .devtools-warning-message {
+                color: rgba(255, 255, 255, 0.9);
+                line-height: 1.6;
+                margin: 0;
+                font-size: 15px;
+                font-weight: 400;
+            }
+
+            .devtools-warning-close {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                background: #FF4444;
+                color: #FFFFFF;
+                border: none;
+                padding: 12px 24px;
+                border-radius: 8px;
+                font-family: 'Poppins', sans-serif;
+                font-weight: 600;
+                font-size: 14px;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                transform: translateY(0);
+                box-shadow: 0 4px 12px rgba(255, 68, 68, 0.2);
+            }
+
+            .devtools-warning-close:hover {
+                background: #FF5555;
+                box-shadow: 0 6px 16px rgba(255, 68, 68, 0.3);
+            }
+
+            .devtools-warning-close:active {
+                transform: translateY(0);
+                box-shadow: 0 2px 8px rgba(255, 68, 68, 0.2);
+            }
+        `;
+
+        const styleElement = document.createElement('style');
+        styleElement.textContent = styles;
+        document.head.appendChild(styleElement);
+    };
+
+    const showWarning = () => {
+        if (warningShown) return;
+        warningShown = true;
+
+        const warningElement = document.createElement('div');
+        warningElement.className = 'devtools-warning-overlay';
+
+        warningElement.innerHTML = `
+            <div class="devtools-warning-container">
+                <div class="devtools-warning-header">
+                    <h3 class="devtools-warning-title">DevTools Warning</h3>
+                </div>
+                <div class="devtools-warning-content">
+                    <p class="devtools-warning-message">
+                        Hey! It looks like you're trying to debug our website. If it is to get all of our links,
+                        please know it's not worth it to copy our content. We allow it, but if you copy all the links,
+                        you won't be up to date on newer links we add, or the removal of broken proxy links.
+                        It's encouraged to always visit on smoresxo.shop
+                    </p>
+                    <button class="devtools-warning-close">Understood</button>
+                </div>
+            </div>
+        `;
+
+        document.body.appendChild(warningElement);
+
+        requestAnimationFrame(() => {
+            warningElement.style.opacity = '1';
+            warningElement.classList.add('visible');
+        });
+
+        const closeButton = warningElement.querySelector('.devtools-warning-close');
+        closeButton.addEventListener('click', () => {
+            warningElement.style.opacity = '0';
+            warningElement.classList.remove('visible');
+            setTimeout(() => {
+                warningElement.remove();
+                warningTimeout = setTimeout(() => {
+                    warningShown = false;
+                }, 5000);
+            }, 400);
+        });
+    };
+
+    injectFont();
+    injectStyles();
+
+    document.addEventListener('keydown', (event) => {
+        if ((event.ctrlKey || event.metaKey) && event.shiftKey &&
+            (event.key === 'I' || event.key === 'J' || event.key === 'C')) {
+            showWarning();
+        }
+        if (event.key === 'F12') {
+            showWarning();
+        }
+    });
+
+    const consoleCheck = () => {
+        const element = new Image();
+        Object.defineProperty(element, 'id', {
+            get: function() {
+                showWarning();
+            }
+        });
+        console.log(element);
+    };
+
+    setInterval(consoleCheck, 3000);
+    consoleCheck();
+})();
+  </script><div class="q1m8rc">
+      <i class="fas fa-paperclip"></i>
+      <span class="zt5v2y">Go to SkipSchool</span>
+    </div>
+
+
+</body></html>
