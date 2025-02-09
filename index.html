@@ -392,6 +392,75 @@
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
   <script src="storage/assets/js/login.js"></script>
 
+
+  <script>
+	
+$(document).ready(function () {
+  const announcementBanner = $("#announcement-banner");
+  const announcementClose = $("#announcement-close");
+
+  const announcementClosedKey = "announcementClosed";
+  const announcementClosedTimeKey = "announcementClosedTime";
+
+  const isAnnouncementClosed = localStorage.getItem(announcementClosedKey);
+  const announcementClosedUntil = localStorage.getItem(announcementClosedTimeKey);
+
+  const now = new Date().getTime();
+
+  if (!isAnnouncementClosed || (announcementClosedUntil && now > announcementClosedUntil)) {
+    announcementBanner.fadeIn();
+  }
+
+  announcementClose.click(function () {
+    announcementBanner.fadeOut();
+    localStorage.setItem(announcementClosedKey, "true");
+
+    const thirtyMinutesFromNow = now + 30 * 60 * 1000;
+    localStorage.setItem(announcementClosedTimeKey, thirtyMinutesFromNow);
+  });
+
+  $(document).ready(function () {
+  // ... (rest of the code is the same)
+
+  if (!isAnnouncementClosed || (announcementClosedUntil && now > announcementClosedUntil)) {
+    announcementBanner.fadeIn(1000); // Fade in over 1 second
+  }
+
+  // ... (rest of the code is the same)
+});
+
+  $("#uv-form").submit(async function (event) {
+    event.preventDefault();
+    const input = $("#uv-address");
+    const url = input.val().trim();
+
+    try {
+      await navigator.serviceWorker.register("/szvy/sw.js", {
+        scope: __uv$config.prefix,
+      });
+
+      let finalUrl = url;
+      if (!isUrl(url)) {
+        finalUrl = "https://www.google.com/search?hl=en-us&q=" + url;
+      } else if (!url.startsWith("https://") && !url.startsWith("http://")) {
+        finalUrl = "http://" + url;
+      }
+
+      sessionStorage.setItem("encodedUrl", __uv$config.encodeUrl(finalUrl));
+      window.location.href = "math.html";
+    } catch (error) {
+      console.error("Error registering service worker:", error);
+      // Handle the error appropriately, e.g., display an error message to the user.
+    }
+  });
+
+  function isUrl(val = "") {
+    return /^http(s?):\/\//.test(val) || (val.includes(".") && val.slice(0, 1) !== " ");
+  }
+}); 
+             
+</script>
+	  
   <script>
     let CLF_config = {
         app_id: "03599c7b-79db-4651-8efa-90e18b54dabf",
