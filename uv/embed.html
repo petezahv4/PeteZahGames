@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimal-ui, shrink-to-fit=yes">
+    <title>proxy</title>
+    <link rel="stylesheet" href="/storage/css/styles.css">
+    <style>
+        body {
+            text-align: center;
+        }
+
+        header {
+            text-align: center;
+        }
+
+        .rainbowtitle {
+            display: inline-block;
+        }
+
+        h1 {
+            color: #fff;
+        }
+        body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #141414;
+    margin: 0;
+}
+
+.spinner {
+    margin-left: 20px;
+    border: 8px solid transparent; 
+    border-top: 8px solid #fff; 
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+    </style>
+</head>
+<body>
+            <br>
+            <br>
+            <br>
+            <h1>Loading your content!</h1>
+            <br>
+            <br>
+            <div class="spinner"></div>
+            
+    <script src="atom.js"></script>
+    <script src="liftoff.js"></script>
+    <script src="register-sw.js"></script>
+    <script src="embed.js"></script>
+</body>
+
+</html>
