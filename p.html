@@ -1,5 +1,7 @@
 
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,6 +38,7 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="storage/assets/css/footer.css">
     <link rel="stylesheet" href="storage/assets/css/iframe.css">
+    <link rel="stylesheet" href="storage/assets/css/settings.css">
 
 
 
@@ -116,13 +119,22 @@
     <div class="row">
       <div class="col-lg-12">
 
+	      <select class="sigma" onchange="location = this.value;" style="
+							width: 100%;
+							display: flex;
+						">>
+							<option value="/p.html"><a href="/p.html">PeteProxy</a></option>
+		                                        <option value="/pages/proxy/p1.html"><a href="/pages/proxy/p1.html">PeteProxy 2</a></option>
+		                                        <option value="/pages/skipschool.html"><a href="/pages/proxy/p1.html">Proxies List</a></option>
+                                                </select>
+
 
           <div class="container-iframe header-text" >
         <div class="iframe-container">
-            <iframe sandbox="allow-scripts allow-pointer-lock allow-forms allow-same-origin allow-downloads" id="myIframe" src="static/prox/iframe.html"></iframe>
+            <iframe sandbox="allow-scripts allow-pointer-lock allow-forms allow-same-origin allow-downloads" id="myIframe" src="static/index.html"></iframe>
         </div>
         <div class="controls">
-        
+        <i style="margin-left: 15px;" class="fas fa-expand icon" onclick="toggleFullscreen()"></i>
     </div>
 	  </div>
       </div>
@@ -172,7 +184,7 @@
   	 		<div class="footer-col">
   	 			<h4>follow us</h4>
   	 			<div class="social-links">
-  	 				<a href="https://discord.gg/7QPDMVvs"><i class="fab fa-discord"></i></a>
+  	 				<a href="https://discord.gg/JDwzdzuv"><i class="fab fa-discord"></i></a>
   	 				<a href="https://twitter.com/PeteZahGames"><i class="fab fa-twitter"></i></a>
   	 				<a href="#"><i class="fab fa-instagram"></i></a>
   	 				<a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -207,6 +219,26 @@
   <script src="storage/assets/js/custom.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
   <script src="storage/assets/js/login.js"></script>
+
+  <script>
+	  function toggleFullscreen() {
+            const iframe = document.getElementById('myIframe');
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.mozRequestFullScreen) { 
+                iframe.mozRequestFullScreen();
+            } else if (iframe.webkitRequestFullscreen) { 
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) { 
+                iframe.msRequestFullscreen();
+            }
+        }
+
+        function refreshIframe() {
+            const iframe = document.getElementById('myIframe');
+            iframe.src = iframe.src; 
+        }
+  </script>
 
   <script>
     let CLF_config = {
