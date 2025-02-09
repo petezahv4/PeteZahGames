@@ -1,0 +1,844 @@
+
+
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+/* use root and classes for theming */
+:root {
+  --Background-Color: #171717;
+  --text-color: white;
+  --Primary-Color: #ff6666;
+  --Secondary-Color: #333333;
+  --Third-Color: #f84545;
+  --Symbols-Color: white;
+}
+
+.catp {
+  --Background-Color: #494d64;
+  --text-color: #cad3f5;
+  --Primary-Color: #9194ab;
+  --Secondary-Color: #5b6078;
+  --Third-Color: #a5adcb;
+  --Symbols-Color: white;
+}
+
+.blue {
+  --Background-Color: #7ea5cb;
+  --text-color: black;
+  --Primary-Color: #386589;
+  --Secondary-Color: #e1eaf3;
+  --Third-Color: #1361a1;
+  --Symbols-Color: white;
+}
+
+.pink {
+  --Background-Color: #d3c6cd;
+  --text-color: black;
+  --Primary-Color: #d3c6cd;
+  --Secondary-Color: #e1eaf3;
+  --Third-Color: #cbbec9;
+  --Symbols-Color: black;
+}
+
+.green {
+  --Background-Color: #9ecaac;
+  --text-color: white;
+  --Primary-Color: #a9d1ab;
+  --Secondary-Color: #84ab90;
+  --Third-Color: #a2ccb0;
+  --Symbols-Color: white;
+}
+
+.greendark {
+  --Background-Color: #287e3e;
+  --text-color: white;
+  --Primary-Color: #1c7633;
+  --Secondary-Color: #17642b;
+  --Third-Color: #2e7f39;
+  --Symbols-Color: white;
+}
+
+.pinkdark {
+  --Background-Color: #7c3a4e;
+  --text-color: white;
+  --Primary-Color: #732e45;
+  --Secondary-Color: #924a66;
+  --Third-Color: #5b2536;
+  --Symbols-Color: white;
+}
+
+.bluedark {
+  --Background-Color: #2a7399;
+  --text-color: white;
+  --Primary-Color: #1f6c95;
+  --Secondary-Color: #4791b6;
+  --Third-Color: #175473;
+  --Symbols-Color: white;
+}
+
+.purple {
+  --Background-Color: #7a76a7;
+  --text-color: white;
+  --Primary-Color: #5f5b8f;
+  --Secondary-Color: #7f7ca5;
+  --Third-Color: #8e8ab4;
+  --Symbols-Color: white;
+}
+
+body {
+  font-family: "Be Vietnam Pro", sans-serif;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--Background-Color);
+}
+
+@media screen and (max-width: 700px) {
+  .navbar {
+    background-color: var(--Secondary-Color);
+    color: #fff;
+    padding: 10px 0;
+    width: 98%;
+    margin-left: 1%;
+    border-radius: 10px;
+    position: fixed;
+    z-index: 10;
+    max-height: 5%;
+  }
+}
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+  0% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes owo {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fa-magnifying-glass {
+  color: var(--text-color);
+}
+
+.button {
+  font-family: "Be Vietnam Pro", sans-serif;
+  border-radius: 5px;
+  width: 7%;
+  height: 5%;
+  background-color: var(--Background-Color);
+  color: white;
+}
+
+.active {
+  color: var(--Primary-Color);
+}
+
+.ex3 {
+  color: var(--text-color);
+  font-size: 30px;
+}
+
+#subtitle {
+  color: var(--text-color);
+  font-size: 25px;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.header-center {
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10%;
+}
+.desc left-margin {
+  height: 50px;
+}
+
+#uv-frame {
+  width: 99%;
+  left: 0.5%;
+  height: 97%;
+  border-radius: 10px;
+  border: none;
+}
+
+.settingsdisplay {
+  align-items: center;
+}
+
+#uv-error {
+  color: #ff6666 !important;
+  white-space: pre-wrap;
+}
+
+::selection {
+  color: var(--Secondary-Color);
+  background-color: var(--Primary-Color);
+}
+
+#uv-register-sw:active {
+  background: var(--Secondary-Color);
+}
+
+#uv-register-sw.show {
+  display: block;
+}
+
+.search {
+  background: none;
+  font-family: inherit;
+  padding: 0px 17px;
+  height: 48px;
+  border: 1px solid rgb(255, 255, 255, 0.2);
+  color: var(--text-color);
+  border-radius: 3px;
+  outline: none;
+  width: 350px;
+  margin-top: 5px;
+  border-radius: 50px;
+  color: var(--text-color);
+  transition: border-radius 0.1s;
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+}
+
+.logo-wrapper .text {
+  font-size: 75px;
+  color: var(--text-color);
+}
+
+.logo-wrapper h1 {
+  color: var(--text-color);
+}
+
+.desc p {
+  width: 450px;
+  color: rgba(253, 253, 253, 0.514);
+}
+
+.navbar {
+  background-color: var(--Secondary-Color);
+  color: #fff;
+  padding: 10px 0;
+  position: fixed;
+  width: 98%;
+  margin-left: 1%;
+  border-radius: 10px;
+  position: fixed;
+  z-index: 10;
+  margin-top: 10px;
+}
+
+.icon {
+  background-color: var(--Primary-Color);
+  width: 50px;
+  height: 50px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #16263e;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #16263e;
+}
+
+.logo {
+  font-size: 24px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.button1 {
+  color: white;
+  font-family: "Be Vietnam Pro", sans-serif;
+  background-color: var(--Background-Color);
+  min-width: 300px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  min-height: 30px;
+  transition: all 0.1s ease;
+  border: none;
+}
+
+.button1:active {
+  transform: scale(0.9);
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  display: inline;
+  margin-left: 5px;
+}
+
+.nav-links li:first-child {
+  margin-left: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-right: auto;
+  margin-left: 10px;
+  z-index: 1;
+}
+
+.search {
+  padding: 15px 18px;
+  border: none;
+  width: 1000px;
+  border-radius: 5px;
+  background-color: floralwhite;
+  color: var(--main-text-color);
+  outline: none;
+  margin-right: 10px;
+  z-index: 1;
+}
+
+.search:focus::placeholder {
+  color: var(--text-color);
+  padding: 20px 15px;
+  z-index: 1;
+}
+
+.material-symbols-outlined {
+  padding: 10px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  z-index: 1;
+}
+
+h1 {
+  font-family: "Be Vietnam Pro";
+}
+
+p.ex2 {
+  font-size: 50px;
+  padding-top: 2%;
+  color: var(--text-color);
+}
+
+p {
+  color: var(--text-color);
+  padding: 20px 15px;
+}
+
+xn {
+  font-size: 30;
+}
+
+.input {
+  background: (--Secondary-Color);
+  font-family: "Be Vietnam Pro", sans-serif;
+  padding: 0px 17px;
+  border: none;
+  height: 50px;
+  color: var(--text-color);
+  outline: none;
+  width: 700px;
+  margin-top: 5px;
+  border-radius: 7px;
+  color: black;
+  transition: border-radius 0.1s;
+}
+
+.nav-links li a:hover {
+  color: var(--Primary-Color);
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 500,
+    "GRAD" 200,
+    "opsz" 48;
+}
+
+.button2 {
+  color: var(--text-color);
+  font-family: "Be Vietnam Pro", sans-serif;
+  background-color: var(--Secondary-Color);
+  min-width: 200px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  min-height: 30px;
+  transition: all 0.1s ease;
+  border: none;
+}
+
+.button2:active {
+  transform: scale(0.9);
+}
+
+.trendingtop {
+  width: 98%;
+  background: linear-gradient(to top, var(--Secondary-Color), var(--Secondary-Color)) padding-box, linear-gradient(to top, var(--Third-Color), var(--Third-Color)) border-box;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 10%;
+  color: var(--Primary-Color);
+  border: 1px solid transparent;
+  border-bottom: 3px solid white;
+}
+
+.trendingbottom {
+  width: 98%;
+  background:  linear-gradient(to top, var(--Secondary-Color) , var(--Secondary-Color)) padding-box, linear-gradient(to top, var(--Primary-Color) , var(--Third-Color)) border-box;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: 20%;
+  color: var(--Primary-Color);
+  margin-bottom: 2%;
+  border: 1px solid transparent;
+}
+
+.active {
+  color: var(--Primary-Color);
+}
+
+.game-icon {
+  text-align: center;
+  width: 120px;
+  height: 120px;
+  position: relative;
+  animation: fadeIn 2s;
+  transition: transform 0.3s ease-in-out;
+  border-radius: 10px;
+  margin: 15px;
+  display: inline-block;
+  flex-wrap: wrap;
+}
+
+.game-icon button {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.game-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  transition: transform 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+.game-icon p {
+  margin-top: 10px;
+  color: #fff;
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Be Vietnam Pro", sans-serif;
+  opacity: 0;
+  transition:
+    bottom 0.3s ease-in-out,
+    opacity 0.3s ease-in-out;
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+  border-radius: 10px;
+}
+
+.game-icon:hover {
+  transform: scale(1.1);
+}
+
+.game-icon:hover img {
+  transform: scale(1.1);
+  border-radius: 15px;
+}
+
+.game-icon:hover p {
+  bottom: 0;
+  opacity: 1;
+}
+
+.lbox {
+  width: 98%;
+  text-align: center;
+  background-color: var(--Secondary-Color);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 20%;
+  color: var(--text-color);
+  margin-left: 1%;
+}
+
+.lboxbottom {
+  width: 98%;
+  background-color: var(--Secondary-Color);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: 20%;
+  color: white;
+  margin-left: 1%;
+}
+
+.mainiframe {
+  border: none;
+  outline: none;
+  position: fixed;
+  height: calc(100vh - 50px);
+  width: 100% !important;
+  padding: none;
+  right: 0;
+  left: 0;
+  bottom: 0px;
+  z-index: -1;
+}
+
+.topbar {
+  width: 100vw;
+  height: 50px;
+  background-color: #18181B;
+  overflow: hidden;
+  border: none;
+  transition: cubic-bezier(1, 1.82, 1, 1.31) 0.25s;
+  font-weight: 300;
+  top: 0px;
+  position: absolute;
+  display: inline;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; 
+  width: 100%;
+  padding-left: 10px; 
+}
+
+
+.topbtn {
+  color: white;
+  background-color: transparent;
+  border: 1px transparent;
+  transition: cubic-bezier(1, 1.82, 1, 1.31) 0.25s;
+  margin-top: 5px;
+  margin-right: 10px;
+}
+
+.topbtn:hover {
+  background-color: #3e47575d;
+  border: 1px #3e47575d;
+  transition: cubic-bezier(1, 1.82, 1, 1.31) 0.25s;
+  border-radius: 5px;
+
+}
+
+.topbtn:active {
+  background-color: #30374425;
+}
+
+@keyframes growOut {
+from {
+transform: scale(0);
+}
+to {
+transform: scale(1);
+}
+}
+
+@keyframes growin {
+from {
+transform: scale(1);
+}
+to {
+transform: scale(0);
+}
+}
+
+.hiddenuvpanel {
+display: none;
+animation: growin .25s;
+}
+
+.uvpanel {
+  animation: growOut .25s;
+  top: 50px;
+  border-radius: 10px;
+  background-color: var(--Background-Color);
+  width: 200px;
+  height: 200px;
+  position: absolute;
+}
+
+.uvbutton {
+background-color: var(--Primary-Color);
+border: none;
+width: 180px;
+height: 30px;
+color: white;
+margin-left: 11px;
+margin-top: 10px;
+font-family: "Be Vietnam Pro", sans-serif;
+font-weight: 400;
+border-radius: 5px;
+}
+
+.uvbutton:hover {
+background-color: var(--Secondary-Color);
+transition: cubic-bezier(1, 1.82, 1, 1.31) 0.25s;
+}
+
+.uvbutton:active {
+background-color: var(--Third-Color);
+}
+
+.hiddenbar {
+display: none;
+}
+
+.barbutton {
+display:none; 
+background-color: #0e121b;
+color: white;
+transition: cubic-bezier(1, 1.82, 1, 1.31) 0.25s;
+}
+
+.barbutton:hover {
+translate:calc(-20px);
+background-color: #3e47575d;
+transition: cubic-bezier(1, 1.82, 1, 1.31) 0.25s;
+}
+
+.CFrame {
+  width: 100vh;
+  height: 100vw;
+  position: aboslute;
+  top: 0; 
+  bottom: 0; 
+  left: 0;
+  right: 0;
+  display: none;
+  background-color: transparent;
+}
+
+/*insert settings panel css here lol :D*/
+.settingspanel {
+  background-color: var(--Secondary-Color);
+  border-radius: 10px;
+  width: 25vw;
+  height: fit-content;
+  box-shadow: 16px 8px 16px 8px rgba(0,0,0,0.2);
+  border: none;
+  padding: 17px;
+  margin: 3vw;
+  display: inline-block;
+  border: 1px solid transparent;
+  transition: cubic-bezier(1, 1.17, 1, 1.31) .25s;
+  color: var(--text-color);
+}
+
+.settingspanel:hover {
+background:  linear-gradient(to top, var(--Secondary-Color) , var(--Secondary-Color)) padding-box,
+linear-gradient(to top, var(--Primary-Color) , var(--Third-Color)) border-box;
+transition: cubic-bezier(1, 1.82, 1, 1.31) .25s;
+transform: translateY(-20px);
+}
+
+
+.settingsdisplay {
+display: flex;
+float: center;
+}
+
+.settingsdisplay2 {
+display: flex;
+float: center;
+}
+
+.switch {
+position: relative;
+display: inline-block;
+width: 60px;
+height: 34px;
+}
+
+.switch input { 
+opacity: 0;
+width: 0;
+height: 0;
+}
+
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+-webkit-transition: .4s;
+transition: .4s;
+}
+
+.slider:before {
+position: absolute;
+content: "";
+height: 26px;
+width: 26px;
+left: 4px;
+bottom: 4px;
+background-color: white;
+-webkit-transition: .4s;
+transition: .4s;
+}
+
+input:checked + .slider {
+background-color: var(--Primary-Color);
+}
+
+input:focus + .slider {
+box-shadow: 0 0 1px var(--Primary-Color);
+}
+
+input:checked + .slider:before {
+-webkit-transform: translateX(26px);
+-ms-transform: translateX(26px);
+transform: translateX(26px);
+}
+
+.slider.round {
+border-radius: 34px;
+}
+
+.slider.round:before {
+border-radius: 50%;
+}
+
+
+.engines {
+  min-width: 300px;
+  background-color: #171717;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 20px
+}
+
+.showbutton {
+  transform: translateY(-30px);
+  color: white;
+  background-color: var(--Background-Color);
+  border: 1px transparent;
+  transition: cubic-bezier(1, 1.82, 1, 1.31) 0.25s;
+  width: 60px;
+  height: 50px;
+  border-radius: 10px;
+}
+
+.showbutton:hover {
+  background-color: var(--Primary-Color);
+  border: 1px var(--Background-Color);
+  transition: cubic-bezier(1, 1.82, 1, 1.31) 0.25s;
+  border-radius: 5px;
+  transform: translateY(0px);
+}
+
+.showbutton:active {
+  background-color: #30374425;
+}
+
+.barbutton {
+display: none;
+}
+
+.iframe {
+  border: none;
+  outline: none;
+  position: fixed;
+  height: 100vh;
+  width: 100% !important;
+  padding: none;
+  right: 0;
+  left: 0;
+  bottom: 0px;
+  z-index: -1;
+}
+
+.copybttn {
+  width: 180px;
+  height: 30px;
+  color: white;
+  margin-left: 11px;
+  margin-top: 10px;
+  border-radius: 5px;
+  background-color: var(--Primary-Color);
+  border: none;
+
+}
+
+.copybttn:hover {
+  background-color: var(--Secondary-Color);
+  transition: cubic-bezier(1, 1.82, 1, 1.31) 0.25s;
+}
+
+.mainIMG:hover {
+cursor: pointer;
+}
